@@ -37,7 +37,8 @@ const App = () => {
       element: <Layout setShowLogin={setShowLogin} />, // Pass prop to Layout
       children: [
         { path: "/", element: <Home /> },
-        {path:"/your-order", element :<Cart />}
+        {path:"/Cart", element :<Cart />},
+        {path:"/Order", element: <PlaceOrder />}
       ],
     },
   ]);

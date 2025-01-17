@@ -15,10 +15,15 @@
     margin: 10px 0px;
     color: black;
 }
+.cart-items-item .cross{
+    cursor: pointer;
+   }
 
 .cart-items-item img{
     width: 50px;
 }
+
+
 
 .Cart hr{
 
@@ -58,6 +63,11 @@
     cursor: pointer;
 }
 
+.cart-total button:hover{
+    transform: scale(1.05);/*the button get bigger*/
+
+}
+
 .cart-promocode{
     flex: 1;
 }
@@ -87,6 +97,13 @@
     border: none;
     color: white;
     border-radius: 4px;
+    transition: 0,5s;
+    cursor: pointer;
+}
+
+
+.cart-promo-code-input button:hover{
+transform: scale(1.05);/*the button get bigger*/
 }
 
 @media (max-width:750px ) {

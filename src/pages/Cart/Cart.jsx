@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext} from 'react'
+import { Link } from "react-router-dom"
 import "./Cart.css"
 import { StoreContext } from '../../context/contexte'
 const Cart = () => {
-  
   const {cartItems,food_list,removeFromCart,remove,getTotalCartAmount} = useContext(StoreContext)
   const totalAmount = getTotalCartAmount();
-  console.log("am",totalAmount);
   return (
     <div className='cart'>
       <div className="cart-items">
@@ -29,7 +28,7 @@ const Cart = () => {
             <p>{item.price} DHs</p>
             <p>{cartItems[item._id]}</p>
             <p>{item.price*cartItems[item._id]}DHS</p>
-            <p onClick={()=>{remove(item._id)}}>x</p>
+            <p onClick={()=>{remove(item._id)} }className="cross">x</p>
             
           </div>
           
@@ -60,7 +59,7 @@ const Cart = () => {
                 
               </div>
             </div>
-            <button>Checkout</button>
+            <Link to='/Order'><button>Checkout</button></Link>
           </div>
           <div className="cart-promocode">
             <div className='cart-promo-code-input'>
