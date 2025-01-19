@@ -1,10 +1,12 @@
 import React, { useContext} from 'react'
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./Cart.css"
 import { StoreContext } from '../../context/contexte'
 const Cart = () => {
-  const {cartItems,food_list,removeFromCart,remove,getTotalCartAmount} = useContext(StoreContext)
+  const {cartItems,food_list,remove,getTotalCartAmount,removeFromCart,addToCart} = useContext(StoreContext)
   const totalAmount = getTotalCartAmount();
+  const navigate = useNavigate();
+  
   return (
     <div className='cart'>
       <div className="cart-items">
@@ -26,7 +28,7 @@ const Cart = () => {
             <img src={item.image} alt="" />
             <p>{item.name}</p>
             <p>{item.price} DHs</p>
-            <p>{cartItems[item._id]}</p>
+            <p>  {cartItems[item._id]}</p>
             <p>{item.price*cartItems[item._id]}DHS</p>
             <p onClick={()=>{remove(item._id)} }className="cross">x</p>
             
@@ -50,16 +52,16 @@ const Cart = () => {
               <hr />
               <div className="cart-total-details">
                 <p>Delivery Free</p>
-                <p>{2}</p>
+                <p>{totalAmount===0?0:20} DHS</p>
               </div>
               <hr />
               <div className="cart-total-details">
                 <p>Total</p>
-                <b>{totalAmount} DHS</b>
+                <b>{totalAmount===0?0:totalAmount+20} DHS</b>
                 
               </div>
             </div>
-            <Link to='/Order'><button>Checkout</button></Link>
+            <button onClick={()=>{navigate('/Cart/Order')}}>Checkout</button>
           </div>
           <div className="cart-promocode">
             <div className='cart-promo-code-input'>
